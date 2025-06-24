@@ -17,6 +17,8 @@ This app predicts whether a loan applicant is eligible for a loan
 based on various personal and financial characteristics.
 """)
 
+st.caption("📌 Click the '>>' icon at the top-left to configure model settings.")
+
 # Load dataset and preprocess
 data_path = "data/raw/credit.csv"
 df = load_and_preprocess_data(data_path)
