@@ -6,6 +6,8 @@ import streamlit as st
 from src.data.make_dataset import load_and_preprocess_data
 from src.features.build_features import create_dummy_vars
 from src.models.train_model import train_RFmodel
+from src.models.predict_model import evaluate_model
+from sklearn.model_selection import train_test_split
 
 # Set Streamlit page config
 st.set_page_config(page_title="Credit Loan Predictor", layout="centered")
@@ -32,6 +34,11 @@ max_features = st.sidebar.number_input("Max Features", min_value=1, max_value=X.
 
 # Train model using configured parameters
 model, _, _ = train_RFmodel(X, y, n_estimators=n_estimators, max_depth=max_depth, max_features=max_features)
+
+# Evaluate model accuracy on a holdout test set
+_, X_test, _, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+accuracy, _ = evaluate_model(model, X_test, y_test)
+
 
 # Main Form for User Input
 with st.form("user_inputs"):
@@ -95,6 +102,7 @@ if submitted:
 st.markdown("---")
 st.info("We used a Random Forest model to predict eligibility. Below is the feature importance chart.")
 st.caption(f"Model used: Random Forest (n_estimators={n_estimators}, max_depth={max_depth}, max_features={max_features})")
+st.caption(f"Model Accuracy on Test Set: **{accuracy * 100:.2f}%**")
 st.image("feature_importance.png", use_container_width=True)
 
 # Footer
