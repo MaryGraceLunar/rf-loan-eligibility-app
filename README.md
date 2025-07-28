@@ -32,9 +32,9 @@ The application is trained on the **German Credit Risk dataset**, a widely used 
 The predictive model is trained using the German Credit Risk dataset. It applies preprocessing steps like encoding categorical variables and scaling numerical features. The classification model used may include algorithms such as Logistic Regression, Random Forest, or XGBoost.
 
 ## Future Enhancements
-* Adding support for multiple datasets.
-* Try advanced model pipelines like cross-validation
-* Adding visualizations to better represent user input and model predictions.
+* Consider larger, more diverse datasets and the integration of external data sources to improve model performance and reduce bias
+* Scalable solutions for larger dataset and on-demand model retraining.
+* Incorporate a backend database would enable persistent storage and logging.
 
 ## Installation (for local deployment)
 If you want to run the application locally, follow these steps:
